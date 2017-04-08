@@ -13,5 +13,5 @@ All available tags are always listed [in Docker Hub](https://hub.docker.com/r/ic
 
 Running the encoder on an image on the host system:
 
-    docker run --rm -it -v "$(pwd):/work" -w /work icedream/guetzli \
+    docker run --rm -it -v "$(pwd):/work" -w /work syutingsong/guetzli \
         example.jpg example_compressed.jpg
