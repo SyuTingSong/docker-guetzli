@@ -16,5 +16,5 @@ Running the encoder on an image on the host system:
 ```bash
 cd some/dir/contains/jpeg/image
 docker run --rm -it -v "$(pwd):/work" syutingsong/guetzli \
-    -quality 90 -verbose
+    all -quality 90 -verbose
 ```
