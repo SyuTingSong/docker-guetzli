@@ -12,7 +12,7 @@ if [ $SUBCMD = 'all' ]; then
     for f in $fs
     do
         echo $f
-        guetzli ${@:2} "$f" "output/$f"
+        guetzli ${@:3} "$f" "output/$f"
     done
 else
     exec $@
