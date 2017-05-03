@@ -38,6 +38,11 @@ RUN \
 	) &&\
 \
 	apk del --no-cache .build-deps &&\
-	rm -rf /var/tmp/* /tmp/* /opt/build
+	rm -rf /var/tmp/* /tmp/* /opt/build &&\
+	mkdir /work
 
-ENTRYPOINT ["guetzli"]
+ADD run.sh /
+VOLUME /work
+WORKDIR /work
+ENTRYPOINT ["/run.sh"]
+
