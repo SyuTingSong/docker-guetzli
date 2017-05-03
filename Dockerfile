@@ -7,8 +7,9 @@ FROM alpine:3.5
 
 # Dev & build
 ARG GFLAGS_VERSION=v2.2.0
-ARG GUETZLI_VERSION=v1.0
+ARG GUETZLI_VERSION=v1.0.1
 RUN \
+    apk add --no-cache parallel &&\
 	apk add --no-cache --virtual .build-deps \
 		libpng-dev \
 		alpine-sdk \
@@ -41,8 +42,10 @@ RUN \
 	rm -rf /var/tmp/* /tmp/* /opt/build &&\
 	mkdir /work
 
+ENV QUALITY=90
+ENV MAX_PROCS=1
 ADD run.sh /
 VOLUME /work
 WORKDIR /work
 ENTRYPOINT ["/run.sh"]
-
+CMD ["all"]

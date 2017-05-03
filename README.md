@@ -14,7 +14,9 @@ All available tags are always listed [in Docker Hub](https://hub.docker.com/r/ic
 Running the encoder on an image on the host system:
 
 ```bash
-cd some/dir/contains/jpeg/image
-docker run --rm -it -v "$(pwd):/work" syutingsong/guetzli \
-    all -quality 90 -verbose
+cd /path/to/jpeg/images
+docker run --rm -it -v "$(pwd):/work"\
+    -e QUALITY=85 -e MAX_PROCS=2\
+    syutingsong/guetzli
 ```
+
