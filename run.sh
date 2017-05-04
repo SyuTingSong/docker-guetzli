@@ -4,13 +4,15 @@ SUBCMD=$1
 
 if [ $SUBCMD = 'all' ]; then
     if [ ! -d output ]; then
+        echo "Creating output dir..."
         mkdir output
     fi
+    echo Quality: $QUALITY
+    echo Compressing `ls *.jpg |wc -l` files with $MAX_PROCS threads...
     for f in *.jpg; do
-        echo Start convert $f
-        sem -j $MAX_PROCS "guetzli ${@:3}\
-            -quality $QUALITY\
-            \"$f\" \"output/$f\" ; echo $f converted"\
+        sem -j $MAX_PROCS "echo Start convert $f;\
+            guetzli ${@:3} -quality $QUALITY \"$f\" \"output/$f\" ;\
+            echo $f converted ; mv $f $f.converted"\
             2>/dev/null
     done
     sem --wait 2>/dev/null
