@@ -12,7 +12,7 @@ if [ $SUBCMD = 'all' ]; then
     for f in *.jpg; do
         sem -j $MAX_PROCS "echo Start convert $f;\
             guetzli ${@:3} -quality $QUALITY \"$f\" \"output/$f\" ;\
-            echo $f converted ; mv $f $f.converted"\
+            echo $f converted ; mv \"$f\" \"$f.converted\""\
             2>/dev/null
     done
     sem --wait 2>/dev/null
