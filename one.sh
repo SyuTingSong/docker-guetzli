@@ -1,9 +1,9 @@
 #!/bin/sh
 
 f=$1
-
+LEN=${#f}
 echo Start convert $f
-guetzli ${@:2} --quality $QUALITY "$f" "output/$f"
+guetzli ${@:$LEN} --quality $QUALITY "$f" "output/$f"
 if [ $? = 0 ]; then
     echo $f converted
 else
