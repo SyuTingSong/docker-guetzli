@@ -33,7 +33,7 @@ RUN cd /tmp &&\
 ENV QUALITY=90
 ENV MAX_PROCS=1
 ENV KEEP_EXIF=1
-ADD run.sh one.sh /
+COPY run.sh one.sh /
 VOLUME /work
 WORKDIR /work
 ENTRYPOINT ["/run.sh"]
