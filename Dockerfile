@@ -2,7 +2,7 @@ FROM alpine:3.6
 
 ARG VERSION=1.0.1
 RUN cd /tmp &&\
-    apk add --no-cache parallel &&\
+    apk add --no-cache parallel exiftool &&\
     apk add --no-cache --virtual .build-deps \
         libpng-dev \
         alpine-sdk \
@@ -32,7 +32,8 @@ RUN cd /tmp &&\
 
 ENV QUALITY=90
 ENV MAX_PROCS=1
-ADD run.sh /
+ENV KEEP_EXIF=1
+ADD run.sh one.sh /
 VOLUME /work
 WORKDIR /work
 ENTRYPOINT ["/run.sh"]
